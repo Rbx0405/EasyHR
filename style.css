@@ -1,0 +1,487 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --background-color: rgb(4, 16, 27);
+    --nav-color: rgb(20, 30, 40);
+    --heading-color: rgb(139, 133, 133);
+    --text-color: #ffffff;
+    --accent-color: rgb(4, 24, 43);
+}
+
+.light-theme {
+    --background-color: #ffffff;
+    --nav-color: #c1bdbd;
+    --heading-color: rgb(139, 133, 133);
+    --text-color: #000000;
+    --accent-color: rgb(188, 216, 242);
+}
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    background-color: var(--background-color);
+}
+
+nav {
+    position: fixed;
+    width: 100%;
+    padding: 0.5rem;
+    background-color: var(--nav-color);
+    /* Slightly lighter dark blue */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* optional */
+    transition: transform 0.3s ease;
+    /* smooth transition for hiding/showing */
+    z-index: 5;
+}
+
+nav h1 {
+    position: absolute;
+    left: 0;
+    font-size: 50px;
+    padding: 20px;
+    z-index: 0;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.theme {
+    position: relative;
+    width: 50px;
+    /* Width of the icons */
+    height: 50px;
+    /* Height of the icons */
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.moon,
+.sun {
+    position: absolute;
+    top: 25;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.moon {
+    z-index: 2;
+    /* Place the moon icon on top */
+    opacity: 1;
+    /* You can control visibility with opacity or display */
+    transition: opacity 0.3s ease-in-out;
+    /* Optional: for smooth transitions */
+}
+
+.sun {
+    z-index: 1;
+    /* Place the sun icon behind */
+    opacity: 0;
+    /* Initially hidden */
+    transition: opacity 0.3s ease-in-out;
+    /* Optional: for smooth transitions */
+}
+
+
+/* Base styles */
+.theme .sun,
+.theme .moon {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Hide Sun Animation */
+.hide-sun {
+    opacity: 0;
+    transform: scale(0.8) rotate(-20deg);
+    pointer-events: none;
+    /* Prevent interaction */
+}
+
+/* Show Sun Animation */
+.show-sun {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    pointer-events: auto;
+    /* Enable interaction */
+}
+
+/* Hide Moon Animation */
+.hide-moon {
+    opacity: 0;
+    transform: scale(0.8) rotate(20deg);
+    pointer-events: none;
+    /* Prevent interaction */
+}
+
+/* Show Moon Animation */
+.show-moon {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    pointer-events: auto;
+    /* Enable interaction */
+}
+
+
+@media (min-width: 1400px) {
+    .desktop-menu {
+        display: flex;
+        list-style: none;
+        color: var(--text-color);
+    }
+
+    .desktop-menu li {
+        padding: 20px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .hamburger-menu {
+        display: none;
+    }
+
+    .menu {
+        display: none;
+    }
+}
+
+@media (max-width: 1400px) {
+
+    .hamburger-menu {
+        padding: 1rem;
+        height: 50px;
+        width: 50px;
+        position: relative;
+        cursor: pointer;
+
+    }
+
+    .ham-bar {
+        position: absolute;
+        height: 4px;
+        border-radius: 2px;
+        transform: translate(-50%, -50%);
+        background-color: var(--text-color);
+        transition: transform .6s, opacity .8s, top .6s;
+    }
+
+    .bar-top {
+        width: 70%;
+        top: 25%;
+        left: 50%;
+    }
+
+    .bar-mid {
+        width: 45%;
+        top: 50%;
+        left: 60%;
+    }
+
+    .bar-bottom {
+        width: 20%;
+        top: 75%;
+        left: 70%;
+    }
+
+    .hamburger-menu.active .bar-top {
+        transform: translate(-50%, -50%) rotate(-315deg);
+        top: 50%;
+    }
+
+    .hamburger-menu.active .bar-mid {
+        display: none;
+    }
+
+    .hamburger-menu.active .bar-bottom {
+        width: 70%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-225deg);
+        top: 50%;
+    }
+
+
+    .menu {
+        position: fixed;
+        top: 0;
+        background-color: var(--accent-color);
+
+        right: -75%;
+        height: 110vh;
+        width: 75%;
+        transition: right .5s;
+    }
+
+    .menu.active {
+        right: 0;
+    }
+
+
+    .desktop-menu {
+        display: none;
+    }
+
+
+    .menu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .menu ul {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .menu li {
+        z-index: 2;
+        list-style: none;
+        font-size: 40px;
+        padding: 10px;
+        font-weight: 550;
+        color: var(--text-color);
+    }
+}
+
+
+
+
+
+h1 {
+    color: var(--text-color);
+}
+
+
+h2 {
+    color: var(--heading-color);
+}
+
+section {
+    transform: translateY(80px);
+}
+
+
+.theme svg {
+    stroke: var(--text-color);
+}
+
+.color-pickers {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.color-pickers h2 {
+    font-size: 30px;
+}
+
+.container {
+    display: flex;
+    gap: 50px;
+}
+
+.color-picker-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: fit-content;
+}
+
+@media(max-width:980px) {
+    .color-picker-container {
+        align-self: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100vw;
+        padding: 2vw;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .previews {
+        display: flex;
+        flex-direction: row;
+    }
+
+
+}
+
+@media(max-width:675px) {
+    .window-preview1 {
+        display: none;
+    }
+
+    .color-pickers label {
+        font-size: 12px;
+    }
+
+}
+
+.wrap-colorpicker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.previews {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+.color-pickers input {
+
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: none;
+    outline: none;
+    border-radius: 2px;
+    height: 50px;
+}
+
+.color-pickers label {
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+/* Container for the window preview */
+.window-preview1 {
+    width: 360px;
+    /* Adjust size as needed */
+    height: 230px;
+    /* Adjust size as needed */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    background: var(--background-color);
+    /* Background color for the preview */
+    margin: 20px auto;
+}
+
+/* Background for the preview */
+.preview-background {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: var(--background-color);
+    /* Background color for the content */
+}
+
+/* Navbar styling */
+.preview-navbar {
+    height: 50px;
+    background: var(--nav-color);
+    /* Navbar background color */
+    color: var(--text-color);
+    /* Navbar text color */
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+/* Navigation links */
+.preview-nav {
+    position: absolute;
+    align-self: right;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+}
+
+/* Headings styling */
+.preview-headings {
+    position: absolute;
+    font-weight: 600;
+    font-size: 30px;
+    transform: translateY(65px);
+    color: var(--heading-color);
+    left: 10px;
+}
+
+.preview-text {
+    font-size: 16px;
+    color: var(--text-color);
+    font-weight: 300;
+}
+
+
+
+/* Container for the window preview */
+.window-preview2 {
+    width: 250px;
+    /* Typical mobile width */
+    height: 450px;
+    /* Typical mobile height */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    background: #fff;
+    /* Background color for the preview */
+    margin: 20px auto;
+}
+
+.preview-navbar-mobile {
+    top: 0px;
+    height: 50px;
+    width: 100px;
+    background-color: var(--nav-color);
+    z-index: -1;
+}
+
+/* Mobile menu styling */
+.preview-mobile-menu {
+    position: absolute;
+    right: 0;
+    width: 70%;
+    height: 100%;
+    background: var(--accent-color);
+    /* Background color of the mobile menu */
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    z-index: 1;
+}
+
+
+.navigation-elements {
+    display: flex;
+    transform: translateY(150px);
+    color: var(--text-color);
+    font-size: 13px;
+}
