@@ -36,6 +36,10 @@ body {
     background-color: var(--background-color);
 }
 
+section{
+    height: 100vh;
+}
+
 nav {
     position: fixed;
     width: 100%;
