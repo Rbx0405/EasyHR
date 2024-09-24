@@ -39,7 +39,11 @@ body {
 section{
     height: 100vh;
 }
-
+h1{
+    font-size: x-large;
+    
+    
+}
 nav {
     position: fixed;
     width: 100%;
